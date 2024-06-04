@@ -1,0 +1,914 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generate/mssql"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("MSSQL_DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model ALARM_INFO {
+  code    String  @id @db.VarChar(100)
+  comment String? @db.NVarChar(100)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtccmmnclcode {
+  CL_CODE           String?   @db.NChar(3)
+  CL_CODE_NM        String?   @db.NVarChar(60)
+  CL_CODE_DC        String?   @db.NVarChar(200)
+  USE_AT            String?   @db.NChar(1)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtccmmncode {
+  CODE_ID           String?   @db.NVarChar(6)
+  CODE_ID_NM        String?   @db.NVarChar(60)
+  CODE_ID_DC        String?   @db.NVarChar(200)
+  USE_AT            String?   @db.NChar(1)
+  CL_CODE           String?   @db.NChar(3)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtccmmndetailcode {
+  CODE_ID           String?   @db.NVarChar(6)
+  CODE              String?   @db.NVarChar(15)
+  CODE_NM           String?   @db.NVarChar(60)
+  CODE_DC           String?   @db.NVarChar(200)
+  USE_AT            String?   @db.NChar(1)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtczip {
+  ZIP               String?   @db.NVarChar(6)
+  SN                Decimal?  @db.Decimal(10, 0)
+  CTPRVN_NM         String?   @db.NVarChar(20)
+  SIGNGU_NM         String?   @db.NVarChar(20)
+  EMD_NM            String?   @db.NVarChar(60)
+  LI_BULD_NM        String?   @db.NVarChar(60)
+  LNBR_DONG_HO      String?   @db.NVarChar(20)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtecopseq {
+  TABLE_NAME String?  @db.NVarChar(20)
+  NEXT_ID    Decimal? @db.Decimal(30, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comthemaildsptchmanage {
+  MSSAGE_ID         String? @db.NVarChar(20)
+  EMAIL_CN          String? @db.NVarChar(1)
+  SNDR              String? @db.NVarChar(50)
+  RCVER             String? @db.NVarChar(50)
+  SJ                String? @db.NVarChar(60)
+  SNDNG_RESULT_CODE String? @db.NChar(1)
+  DSPTCH_DT         String? @db.NChar(20)
+  ATCH_FILE_ID      String? @db.NChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comthemplyrinfochangedtls {
+  EMPLYR_ID          String? @db.NVarChar(20)
+  CHANGE_DE          String? @db.NChar(20)
+  ORGNZT_ID          String? @db.NChar(20)
+  GROUP_ID           String? @db.NChar(20)
+  EMPL_NO            String? @db.NVarChar(20)
+  SEXDSTN_CODE       String? @db.NChar(1)
+  BRTHDY             String? @db.NChar(20)
+  FXNUM              String? @db.NVarChar(20)
+  HOUSE_ADRES        String? @db.NVarChar(100)
+  HOUSE_END_TELNO    String? @db.NVarChar(4)
+  AREA_NO            String? @db.NVarChar(4)
+  DETAIL_ADRES       String? @db.NVarChar(100)
+  ZIP                String? @db.NVarChar(6)
+  OFFM_TELNO         String? @db.NVarChar(20)
+  MBTLNUM            String? @db.NVarChar(20)
+  EMAIL_ADRES        String? @db.NVarChar(50)
+  HOUSE_MIDDLE_TELNO String? @db.NVarChar(4)
+  PSTINST_CODE       String? @db.NChar(8)
+  EMPLYR_STTUS_CODE  String? @db.NChar(1)
+  ESNTL_ID           String? @db.NChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comthprogrmchangedtls {
+  PROGRM_FILE_NM     String?  @db.NVarChar(60)
+  REQUST_NO          Decimal? @db.Decimal(10, 0)
+  RQESTER_ID         String?  @db.NVarChar(20)
+  CHANGE_REQUST_CN   String?
+  REQUST_PROCESS_CN  String?  @db.NVarChar(1)
+  OPETR_ID           String?  @db.NVarChar(20)
+  PROCESS_STTUS_CODE String?  @db.NVarChar(15)
+  PROCESS_DE         String?  @db.NChar(20)
+  RQESTDE            String?  @db.NChar(20)
+  REQUST_SJ          String?  @db.NVarChar(60)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnadbk {
+  EMPLYR_ID         String?   @db.NVarChar(20)
+  NCRD_ID           String?   @db.NChar(20)
+  FRST_REGIST_PNTTM DateTime?
+  LAST_UPDT_PNTTM   DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+  ADBK_CONSTNT_ID   String?   @db.NChar(20)
+  NM                String?   @db.NVarChar(50)
+  EMAIL_ADRES       String?   @db.NVarChar(50)
+  MBTLNUM           String?   @db.NVarChar(20)
+  FXNUM             String?   @db.NVarChar(20)
+  OFFM_TELNO        String?   @db.NVarChar(20)
+  HOUSE_TELNO       String?   @db.NVarChar(20)
+  ADBK_ID           String?   @db.NChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnadbkmanage {
+  ADBK_ID           String?   @db.NChar(20)
+  ADBK_NM           String?   @db.NVarChar(50)
+  OTHBC_SCOPE       String?   @db.NVarChar(20)
+  USE_AT            String?   @db.NChar(1)
+  WRTER_ID          String?   @db.NVarChar(20)
+  TRGET_ORGNZT_ID   String?   @db.NChar(20)
+  FRST_REGIST_PNTTM DateTime?
+  LAST_UPDT_PNTTM   DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnauthorgroupinfo {
+  GROUP_ID        String? @db.NChar(20)
+  GROUP_NM        String? @db.NVarChar(60)
+  GROUP_CREAT_DE  String? @db.NChar(20)
+  GROUP_DC        String? @db.NVarChar(100)
+  GROUP_CREATE_ID String? @db.NVarChar(20)
+  GROUP_UPDATE_DE String? @db.NChar(20)
+  GROUP_UPDATE_ID String? @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnauthorinfo {
+  AUTHOR_CODE     String? @db.NVarChar(30)
+  AUTHOR_NM       String? @db.NVarChar(60)
+  AUTHOR_DC       String? @db.NVarChar(200)
+  AUTHOR_CREAT_DE String? @db.NChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnauthorrolerelate {
+  AUTHOR_CODE String?   @db.NVarChar(30)
+  ROLE_CODE   String?   @db.NVarChar(50)
+  CREAT_DT    DateTime?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnbkmkmenumanageresult {
+  MENU_ID          Decimal? @db.Decimal(20, 0)
+  EMPLYR_ID        String?  @db.NVarChar(20)
+  MENU_NM          String?  @db.NVarChar(60)
+  PROGRM_STRE_PATH String?  @db.NVarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnemplyrinfo {
+  EMPLYR_ID          String?   @db.NVarChar(20)
+  ORGNZT_ID          String?   @db.NChar(20)
+  USER_NM            String?   @db.NVarChar(60)
+  PASSWORD           String?   @db.NVarChar(200)
+  EMPL_NO            String?   @db.NVarChar(20)
+  IHIDNUM            String?   @db.NVarChar(200)
+  SEXDSTN_CODE       String?   @db.NChar(1)
+  BRTHDY             String?   @db.NChar(20)
+  FXNUM              String?   @db.NVarChar(20)
+  HOUSE_ADRES        String?   @db.NVarChar(100)
+  PASSWORD_HINT      String?   @db.NVarChar(100)
+  PASSWORD_CNSR      String?   @db.NVarChar(100)
+  HOUSE_END_TELNO    String?   @db.NVarChar(4)
+  AREA_NO            String?   @db.NVarChar(4)
+  DETAIL_ADRES       String?   @db.NVarChar(100)
+  ZIP                String?   @db.NVarChar(6)
+  OFFM_TELNO         String?   @db.NVarChar(20)
+  MBTLNUM            String?   @db.NVarChar(20)
+  EMAIL_ADRES        String?   @db.NVarChar(50)
+  OFCPS_NM           String?   @db.NVarChar(60)
+  HOUSE_MIDDLE_TELNO String?   @db.NVarChar(4)
+  GROUP_ID           String?   @db.NChar(20)
+  PSTINST_CODE       String?   @db.NChar(8)
+  EMPLYR_STTUS_CODE  String?   @db.NChar(1)
+  ESNTL_ID           String?   @db.NChar(20)
+  CRTFC_DN_VALUE     String?   @db.NVarChar(100)
+  SBSCRB_DE          DateTime?
+  LOCK_AT            String?   @db.NChar(1)
+  LOCK_CNT           Decimal?  @db.Decimal(3, 0)
+  LOCK_LAST_PNTTM    DateTime?
+  CHG_PWD_LAST_PNTTM DateTime?
+  MAIN_APP           String?   @db.NVarChar(200)
+  WIDGET_PLUS_CNT    Int?
+  TOKEN              String?   @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnemplyrscrtyestbs {
+  SCRTY_DTRMN_TRGET_ID String? @db.NVarChar(20)
+  MBER_TY_CODE         String? @db.NChar(5)
+  AUTHOR_CODE          String? @db.NVarChar(30)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnentrprsmber {
+  ENTRPRS_MBER_ID            String?   @db.NVarChar(20)
+  ENTRPRS_SE_CODE            String?   @db.NChar(8)
+  BIZRNO                     String?   @db.NVarChar(20)
+  JURIRNO                    String?   @db.NVarChar(13)
+  CMPNY_NM                   String?   @db.NVarChar(60)
+  CXFC                       String?   @db.NVarChar(50)
+  ZIP                        String?   @db.NVarChar(6)
+  ADRES                      String?   @db.NVarChar(100)
+  ENTRPRS_TELNO              String?   @db.NVarChar(12)
+  ENTRPRS_MIDDLE_TELNO       String?   @db.NVarChar(4)
+  FXNUM                      String?   @db.NVarChar(20)
+  INDUTY_CODE                String?   @db.NChar(1)
+  INDUTY_NM                  String?   @db.NVarChar(100)
+  APPLCNT_NM                 String?   @db.NVarChar(50)
+  APPLCNT_IHIDNUM            String?   @db.NVarChar(200)
+  SBSCRB_DE                  DateTime?
+  ENTRPRS_MBER_STTUS         String?   @db.NVarChar(15)
+  ENTRPRS_MBER_PASSWORD      String?   @db.NVarChar(200)
+  ENTRPRS_MBER_PASSWORD_HINT String?   @db.NVarChar(100)
+  ENTRPRS_MBER_PASSWORD_CNSR String?   @db.NVarChar(100)
+  GROUP_ID                   String?   @db.NChar(20)
+  DETAIL_ADRES               String?   @db.NVarChar(100)
+  ENTRPRS_END_TELNO          String?   @db.NVarChar(4)
+  AREA_NO                    String?   @db.NVarChar(20)
+  APPLCNT_EMAIL_ADRES        String?   @db.NVarChar(50)
+  ESNTL_ID                   String?   @db.NChar(20)
+  LOCK_AT                    String?   @db.NChar(1)
+  LOCK_CNT                   Decimal?  @db.Decimal(3, 0)
+  LOCK_LAST_PNTTM            DateTime?
+  CHG_PWD_LAST_PNTTM         DateTime?
+  COMPNY_TYPE                String?   @db.NVarChar(1)
+  COMPNY_EMAIL_ADRES         String?   @db.NVarChar(50)
+  APPLCNT_DUTY               String?   @db.NVarChar(30)
+  APPLCNT_PART               String?   @db.NVarChar(30)
+  APPLCNT_NUMBER             String?   @db.NVarChar(15)
+  ETC                        String?   @db.NVarChar(100)
+  WIDGET_PLUS_CNT            Int?
+  MAIN_APP                   String?   @db.NVarChar(200)
+  TOKEN                      String?   @db.VarChar(100)
+  TOKEN_DATE                 String?   @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnfile {
+  ATCH_FILE_ID String?   @db.NChar(20)
+  CREAT_DT     DateTime?
+  USE_AT       String?   @db.NChar(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnfiledetail {
+  ATCH_FILE_ID    String?  @db.NChar(20)
+  FILE_SN         Decimal? @db.Decimal(10, 0)
+  FILE_STRE_COURS String?  @db.NVarChar(2000)
+  STRE_FILE_NM    String?  @db.NVarChar(255)
+  ORIGNL_FILE_NM  String?  @db.NVarChar(255)
+  FILE_EXTSN      String?  @db.NVarChar(20)
+  FILE_CN         String?  @db.NVarChar(1)
+  FILE_SIZE       Decimal? @db.Decimal(8, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtngnrlmber {
+  MBER_ID            String?   @db.NVarChar(20)
+  PASSWORD           String?   @db.NVarChar(200)
+  PASSWORD_HINT      String?   @db.NVarChar(100)
+  PASSWORD_CNSR      String?   @db.NVarChar(100)
+  IHIDNUM            String?   @db.NVarChar(200)
+  MBER_NM            String?   @db.NVarChar(50)
+  ZIP                String?   @db.NVarChar(6)
+  ADRES              String?   @db.NVarChar(100)
+  AREA_NO            String?   @db.NVarChar(4)
+  MBER_STTUS         String?   @db.NVarChar(15)
+  DETAIL_ADRES       String?   @db.NVarChar(100)
+  END_TELNO          String?   @db.NVarChar(4)
+  MBTLNUM            String?   @db.NVarChar(20)
+  GROUP_ID           String?   @db.NChar(20)
+  MBER_FXNUM         String?   @db.NVarChar(20)
+  MBER_EMAIL_ADRES   String?   @db.NVarChar(50)
+  MIDDLE_TELNO       String?   @db.NVarChar(4)
+  SBSCRB_DE          DateTime?
+  SEXDSTN_CODE       String?   @db.NChar(1)
+  ESNTL_ID           String?   @db.NChar(20)
+  LOCK_AT            String?   @db.NChar(1)
+  LOCK_CNT           Decimal?  @db.Decimal(3, 0)
+  LOCK_LAST_PNTTM    DateTime?
+  CHG_PWD_LAST_PNTTM DateTime?
+  WIDGET_PLUS_CNT    Int?
+  MAIN_APP           String?   @db.NVarChar(200)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnloginpolicy {
+  EMPLYR_ID         String?   @db.NVarChar(20)
+  IP_INFO           String?   @db.NVarChar(23)
+  DPLCT_PERM_AT     String?   @db.NChar(1)
+  LMTT_AT           String?   @db.NChar(1)
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  FRST_REGIST_PNTTM DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnmenucreatdtls {
+  MENU_NO        Decimal? @db.Decimal(20, 0)
+  AUTHOR_CODE    String?  @db.NVarChar(30)
+  MAPNG_CREAT_ID String?  @db.NVarChar(30)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnmenuinfo {
+  MENU_NM           String?  @db.NVarChar(60)
+  PROGRM_FILE_NM    String?  @db.NVarChar(60)
+  MENU_NO           Decimal? @db.Decimal(20, 0)
+  UPPER_MENU_NO     Decimal? @db.Decimal(20, 0)
+  MENU_ORDR         Decimal? @db.Decimal(5, 0)
+  MENU_DC           String?  @db.NVarChar(250)
+  RELATE_IMAGE_PATH String?  @db.NVarChar(100)
+  RELATE_IMAGE_NM   String?  @db.NVarChar(60)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnncrd {
+  NCRD_ID           String?   @db.NChar(20)
+  NCRD_TRGTER_ID    String?   @db.NVarChar(20)
+  NM                String?   @db.NVarChar(50)
+  TELNO             String?   @db.NVarChar(20)
+  NATION_NO         String?   @db.NVarChar(10)
+  AREA_NO           String?   @db.NVarChar(4)
+  MIDDLE_TELNO      String?   @db.NVarChar(4)
+  END_TELNO         String?   @db.NVarChar(4)
+  MBTLNUM           String?   @db.NVarChar(20)
+  IDNTFC_NO         String?   @db.NVarChar(10)
+  MIDDLE_MBTLNUM    String?   @db.NVarChar(4)
+  END_MBTLNUM       String?   @db.NVarChar(4)
+  EMAIL_ADRES       String?   @db.NVarChar(50)
+  CMPNY_NM          String?   @db.NVarChar(60)
+  DEPT_NM           String?   @db.NVarChar(60)
+  ADRES             String?   @db.NVarChar(100)
+  DETAIL_ADRES      String?   @db.NVarChar(100)
+  OFCPS_NM          String?   @db.NVarChar(60)
+  CLSF_NM           String?   @db.NVarChar(60)
+  EXTRL_USER_AT     String?   @db.NChar(1)
+  OTHBC_AT          String?   @db.NChar(1)
+  RM                String?   @db.NVarChar(2500)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnorgnztinfo {
+  ORGNZT_ID String? @db.NChar(20)
+  ORGNZT_NM String? @db.NVarChar(20)
+  ORGNZT_DC String? @db.NVarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnprogrmlist {
+  PROGRM_FILE_NM   String? @db.NVarChar(60)
+  PROGRM_STRE_PATH String? @db.NVarChar(100)
+  PROGRM_KOREAN_NM String? @db.NVarChar(60)
+  PROGRM_DC        String? @db.NVarChar(200)
+  URL              String? @db.NVarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnrestde {
+  RESTDE_NO         Decimal?  @db.Decimal(6, 0)
+  RESTDE            String?   @db.NChar(8)
+  RESTDE_NM         String?   @db.NVarChar(60)
+  RESTDE_DC         String?   @db.NVarChar(200)
+  RESTDE_SE_CODE    String?   @db.NVarChar(2)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnroleinfo {
+  ROLE_CODE     String? @db.NVarChar(50)
+  ROLE_NM       String? @db.NVarChar(60)
+  ROLE_PTTRN    String? @db.NVarChar(300)
+  ROLE_DC       String? @db.NVarChar(200)
+  ROLE_TY       String? @db.NVarChar(80)
+  ROLE_SORT     String? @db.NVarChar(10)
+  ROLE_CREAT_DE String? @db.NChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnroles_hierarchy {
+  PARNTS_ROLE String? @db.NVarChar(30)
+  CHLDRN_ROLE String? @db.NVarChar(30)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnsitemap {
+  MAPNG_CREAT_ID  String? @db.NVarChar(30)
+  CREATR_ID       String? @db.NVarChar(20)
+  MAPNG_FILE_NM   String? @db.NVarChar(60)
+  MAPNG_FILE_PATH String? @db.NVarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtnstplatinfo {
+  USE_STPLAT_ID      String?   @db.NChar(20)
+  USE_STPLAT_NM      String?   @db.NVarChar(100)
+  USE_STPLAT_CN      String?   @db.NVarChar(1)
+  INFO_PROVD_AGRE_CN String?   @db.NVarChar(1)
+  FRST_REGIST_PNTTM  DateTime?
+  FRST_REGISTER_ID   String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM    DateTime?
+  LAST_UPDUSR_ID     String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model comtrdnmadrzip {
+  RDMN_CODE         String?   @db.NVarChar(12)
+  SN                Decimal?  @db.Decimal(10, 0)
+  CTPRVN_NM         String?   @db.NVarChar(20)
+  SIGNGU_NM         String?   @db.NVarChar(20)
+  RDMN              String?   @db.NVarChar(60)
+  BDNBR_MNNM        String?   @db.NVarChar(5)
+  BDNBR_SLNO        String?   @db.NVarChar(5)
+  BULD_NM           String?   @db.NVarChar(60)
+  DETAIL_BULD_NM    String?   @db.NVarChar(60)
+  ZIP               String?   @db.NVarChar(6)
+  FRST_REGIST_PNTTM DateTime?
+  FRST_REGISTER_ID  String?   @db.NVarChar(20)
+  LAST_UPDT_PNTTM   DateTime?
+  LAST_UPDUSR_ID    String?   @db.NVarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model group_seq_test {
+  FAB_CD    String?   @db.VarChar(100)
+  EQP_ID    String?   @db.VarChar(100)
+  SEQ       BigInt?
+  KEY       String?   @db.VarChar(100)
+  VALUE     String?   @db.VarChar(100)
+  CREATE_DT DateTime? @db.DateTime
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_app {
+  app_seq       Int
+  app_nm        String?   @db.NVarChar(200)
+  app_main      String?   @db.NVarChar(255)
+  app_logo      String?   @db.NVarChar(255)
+  chart_version String?   @db.NVarChar(50)
+  use_yn        String?   @db.NChar(1)
+  create_user   String?   @db.NVarChar(50)
+  create_date   DateTime?
+  update_user   String?   @db.NVarChar(50)
+  update_date   DateTime?
+  app_path      String?   @db.NVarChar(100)
+  theme         String?   @db.VarChar(50)
+  recipe_name   String?   @db.NVarChar(200)
+  scenario_id   String?   @db.NVarChar(200)
+  alarm_yn      String?   @db.NChar(1)
+  scenario_name String?   @db.NVarChar(200)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_app_menu {
+  menu_nm           String?  @db.NVarChar(60)
+  d_id              String?  @db.NVarChar(60)
+  menu_no           Decimal? @db.Decimal(20, 0)
+  upper_menu_no     Decimal? @db.Decimal(20, 0)
+  menu_ordr         Decimal? @db.Decimal(5, 0)
+  menu_dc           String?  @db.NVarChar(250)
+  relate_image_path String?  @db.NVarChar(100)
+  relate_image_nm   String?  @db.NVarChar(60)
+  app_seq           Int
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_calendar {
+  SEQ        BigInt    @default(autoincrement())
+  TITLE      String    @db.NVarChar(30)
+  START_DATE DateTime?
+  END_DATE   DateTime?
+  COLOR      String?   @db.NVarChar(10)
+  REG_DT     DateTime?
+  REG_NM     String?   @db.NVarChar(30)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_code {
+  seq         Int
+  p_code      String?   @db.VarChar(10)
+  code        String?   @db.VarChar(10)
+  code_nm     String?   @db.NVarChar(255)
+  create_time DateTime? @db.DateTime
+  create_user String?   @db.VarChar(255)
+  update_time DateTime? @db.DateTime
+  update_user String?   @db.VarChar(255)
+  use_yn      String?   @db.VarChar(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dashboard {
+  d_seq       Int       @default(autoincrement())
+  d_group_seq Int?
+  d_id        String?   @db.NVarChar(200)
+  d_name      String?   @db.NVarChar(200)
+  d_title     String?   @db.NVarChar(300)
+  d_subtitle  String?   @db.NVarChar(300)
+  d_desc      String?   @db.NVarChar(200)
+  d_content   String?   @db.NVarChar(Max)
+  create_user String?   @db.NVarChar(50)
+  create_date DateTime?
+  update_user String?   @db.NVarChar(50)
+  update_date DateTime?
+  app_seq     Int
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dashboard_history {
+  seq         BigInt    @default(autoincrement())
+  app_seq     Int?
+  d_id        String?   @db.NVarChar(100)
+  d_seq       Int?
+  user_id     String?   @db.NVarChar(20)
+  create_time DateTime? @default(now(), map: "DF__n_dashboa__creat__5812160E")
+  use_yn      String?   @db.NChar(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dashboard_show {
+  seq           Int       @default(autoincrement())
+  user_id       String?   @db.NVarChar(100)
+  app_nm        String?   @db.NVarChar(100)
+  interval_time Int?
+  create_user   String?   @db.NVarChar(100)
+  create_date   DateTime? @db.DateTime
+  update_user   String?   @db.NVarChar(100)
+  update_date   DateTime? @db.DateTime
+  use_yn        String?   @db.Char(1)
+  app_id        String?   @db.NVarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dashboard_show_d {
+  seq             Int       @default(autoincrement())
+  p_seq           Int
+  dashboard_nm    String?   @db.NVarChar(200)
+  dashboard_order Int?
+  create_user     String?   @db.NVarChar(100)
+  create_date     DateTime? @db.DateTime
+  update_user     String?   @db.NVarChar(100)
+  update_date     DateTime? @db.DateTime
+  use_yn          String?   @db.Char(1)
+  dashboard_url   String?   @db.NVarChar(200)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dashboard_widget {
+  seq          Int
+  scenario_id  String?   @db.NVarChar(100)
+  dashboard_id String?   @db.NVarChar(200)
+  body_id      String?   @db.NVarChar(100)
+  user_id      String?   @db.NVarChar(100)
+  app_nm       String?   @db.NVarChar(100)
+  user_nm      String?   @db.NVarChar(100)
+  create_date  DateTime?
+  app_id       String?   @db.NVarChar(100)
+  dashboard_nm String?   @db.NVarChar(200)
+  order_no     Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_dia_m {
+  m_code      String?  @db.VarChar(5)
+  m_name      String?  @db.NVarChar(100)
+  m_category  String?  @db.VarChar(10)
+  create_time DateTime @db.DateTime
+  create_user String?  @db.NVarChar(256)
+  update_time DateTime @db.DateTime
+  update_user String?  @db.NVarChar(256)
+  use_yn      String?  @db.Char(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_DIA_S {
+  e_code      String?   @db.VarChar(35)
+  m_code      String?   @db.VarChar(5)
+  d_code      String?   @db.VarChar(20)
+  e_name      String?   @db.VarChar(100)
+  d_name      String?   @db.VarChar(100)
+  usl         String?   @db.VarChar(100)
+  lsl         String?   @db.VarChar(100)
+  nominal     String?   @db.VarChar(100)
+  create_date DateTime? @db.DateTime
+  create_user String?   @db.NVarChar(100)
+  update_date DateTime? @db.DateTime
+  update_user String?   @db.NVarChar(100)
+  use_yn      String?   @db.VarChar(1)
+  type        String?   @db.VarChar(10)
+  revision    Int
+  spec_id     Int
+  nominal_use Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_equip {
+  e_code      String?  @db.VarChar(20)
+  e_name      String?  @db.NVarChar(100)
+  l_code      String?  @db.VarChar(256)
+  w_code      String?  @db.VarChar(256)
+  create_time DateTime @db.DateTime
+  create_user String?  @db.NVarChar(256)
+  update_time DateTime @db.DateTime
+  update_user String?  @db.NVarChar(256)
+  use_yn      String?  @db.Char(1)
+  e_type      String?  @db.VarChar(50)
+  e_number    String?  @db.VarChar(50)
+  interval    Int?
+  f_code      String?  @db.VarChar(255)
+  if_code     String?  @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_equip_dia {
+  seq         Int
+  e_code      String?  @db.VarChar(20)
+  m_code      String?  @db.VarChar(5)
+  d_code      String?  @db.VarChar(20)
+  use_yn      String?  @db.VarChar(1)
+  create_user String?  @db.NVarChar(255)
+  update_user String?  @db.NVarChar(255)
+  create_time DateTime @db.DateTime
+  update_time DateTime @db.DateTime
+  type        String?  @db.VarChar(10)
+  category    String?  @db.VarChar(10)
+  description String?  @db.NVarChar(100)
+  unit        String?  @db.VarChar(10)
+  interval    Int?
+  remark      String?  @db.NVarChar(200)
+  ps_code     String?  @db.VarChar(50)
+  ps_sub_code String?  @db.VarChar(50)
+  multiple    Float?
+  alarm_yn    String?  @db.VarChar(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_EQUIP_LIVE {
+  WC       String? @db.VarChar(100)
+  EQUIP_NO String? @db.VarChar(100)
+  WC_NAME  String? @db.VarChar(100)
+  STATUS   Int?
+  OK       Float?  @db.Real
+  BAD      Float?  @db.Real
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_mult_lang {
+  lang_code        String?   @db.NVarChar(120)
+  lang_desc        String?   @db.NVarChar(500)
+  ko               String?   @db.NVarChar(500)
+  en               String?   @db.NVarChar(500)
+  zh               String?   @db.NVarChar(500)
+  cn               String?   @db.NVarChar(500)
+  use_yn           String?   @db.NChar(1)
+  spare_01         String?   @db.NVarChar(240)
+  spare_02         String?   @db.NVarChar(240)
+  spare_03         String?   @db.NVarChar(240)
+  spare_04         String?   @db.NVarChar(240)
+  reg_by           String?   @db.NVarChar(20)
+  reg_dt           DateTime?
+  upd_by           String?   @db.NVarChar(20)
+  upd_dt           DateTime?
+  seq              BigInt
+  lang_type        String?   @db.NVarChar(50)
+  lang_middle_type String?   @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_OPREATION {
+  WC         String?   @db.NVarChar(10)
+  OPTION     String?   @db.VarChar(Max)
+  REG_BY     String?   @db.NVarChar(20)
+  REG_DT     DateTime? @db.SmallDateTime
+  UNIT_IMAGE String?   @db.NVarChar(50)
+  MAIN_IMAGE String?   @db.NVarChar(50)
+  SUB_IMAGE  String?   @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_scenario {
+  s_seq         Int       @default(autoincrement())
+  app_seq       Int?
+  scenario_id   String?   @db.NVarChar(100)
+  scenario_nm   String?   @db.NVarChar(100)
+  scenario_desc String?   @db.NVarChar(255)
+  scenario_con  String?   @db.NVarChar(Max)
+  create_user   String?   @db.NVarChar(50)
+  create_date   DateTime? @default(now(), map: "DF__n_scenari__creat__59063A47") @db.DateTime
+  update_user   String?   @db.NVarChar(50)
+  update_date   DateTime? @default(now(), map: "DF__n_scenari__updat__59FA5E80") @db.DateTime
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_SUMMARY_POWER_DAY {
+  seq         BigInt
+  value       String? @db.NVarChar(256)
+  sum_value   String? @db.NVarChar(256)
+  create_date String? @db.NVarChar(10)
+  e_code      String? @db.VarChar(20)
+  d_code      String? @db.VarChar(20)
+  time        String? @db.VarChar(10)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_SVG_STD {
+  CODE   String? @db.VarChar(100)
+  NVALUE String? @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n_system {
+  site_id      String? @db.NVarChar(100)
+  site_name    String? @db.NVarChar(100)
+  site_logo    String? @db.NVarChar(255)
+  site_version String? @db.NVarChar(50)
+  main_app     String? @db.NVarChar(100)
+  bdp_version  String? @db.NVarChar(10)
+  bdp_host     String? @db.NVarChar(100)
+  bdp_port     Int?
+  theme        String? @db.NVarChar(50)
+  mode         String? @db.VarChar(10)
+  dataschema   String? @db.VarChar(100)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model N_USER {
+  user_id     String?  @db.NVarChar(256)
+  user_name   String?  @db.NVarChar(256)
+  user_pass   String?  @db.NVarChar(256)
+  level_id    String?  @db.NVarChar(256)
+  email       String?  @db.NVarChar(256)
+  emp_no      String?  @db.NVarChar(256)
+  insert_user String?  @db.NVarChar(256)
+  insert_date DateTime @db.DateTime
+  update_user String?  @db.NVarChar(256)
+  update_date DateTime @db.DateTime
+  is_active   String?  @db.NChar(1)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model n31_alarm_data {
+  arm_seq      Int
+  e_code       String?   @db.NVarChar(40)
+  d_code       String?   @db.NVarChar(40)
+  starttime    DateTime  @db.DateTime
+  value        Float     @db.Real
+  create_date  DateTime? @db.DateTime
+  check_yn     String?   @db.Char(1)
+  recdate      String?   @db.VarChar(20)
+  message_send String?   @db.Char(1)
+  update_date  DateTime? @db.DateTime
+  update_user  String?   @db.NVarChar(40)
+
+  @@ignore
+}
